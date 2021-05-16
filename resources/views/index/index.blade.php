@@ -1,10 +1,11 @@
 @extends('layouts.index')
 
 @section('title')
-    Tenx | Tenx is a name of such Organization that runs or leads something 10x speed
+    BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! 
 @endsection
 
 @section('css')
+    {!!Html::style('css/parsley.css')!!}
     <style type="text/css">
         body {
             overflow: hidden;
@@ -32,14 +33,17 @@
             background-position:center;
             margin:-100px 0 0 -100px;
         }
+        .parsley-errors-list li {
+            color: #FFFFFF;
+        }
     </style>
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}"> --}}
     <meta property="og:image" content="{{ asset('/images/banner.jpg') }}" />
-    <meta property="og:title" content="Tenx | Tenx is a name of such Organization that runs or leads something 10x speed"/>
-    <meta name="description" property="og:description" content="BasaChai (বাসাচাই) is the place where you can find your affordable home for rent! Developed by A. H. M. Azimul Haque" />
+    <meta property="og:title" content="BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! "/>
+    <meta name="description" property="og:description" content="BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! Developed by A. H. M. Azimul Haque" />
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta property="og:site_name" content="BasaChai (বাসাচাই)">
+    <meta property="og:site_name" content="BasaChai (বাসা চাই)">
     <meta property="og:locale" content="en_US">
     <meta property="fb:admins" content="100001596964477">
     <meta property="fb:app_id" content="163879201229487">
@@ -50,6 +54,7 @@
     <meta name="article:author" content="A. H. M. Azimul Haque">
     <meta name="article:tag" content="Article">
     <meta name="article:modified_time" content="{{ date('F d, Y') }}">
+
 @endsection
 
 @section('content')
@@ -59,13 +64,48 @@
     {{-- @include('partials._slider') --}}
     
     <!-- about section -->
-    <section class=" wow fadeIn">
+    <section id="counter" class="fix-background content-top-margin" style="background-image:url('/images/mapback.png');">
+        <div class="opacity-full bg-dark-gray"></div>
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-md-8 col-sm-10 text-center center-col">
+                    <div class="row">
+                        <form action="{{ route('index.search') }}" method="post" data-parsley-validate="">
+                            {!! csrf_field() !!}
+                            <div class="col-md-5">
+                              <div class="form-group no-margin-bottom">
+                                  <select name="district" id="district" required="">
+                                    <option value="" selected="" disabled="">Select District</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Other ">Other</option>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="col-md-5">
+                              <div class="form-group no-margin-bottom">
+                                  <select name="upazilla" id="upazilla" required="">
+                                    <option value="" selected="" disabled="">Select Area</option>
+                                    <option value="tenant">Mohammadpur</option>
+                                    <option value="landlord ">Adabor</option>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="col-md-2">
+                              <button class="btn highlight-button-dark btn-small margin-one" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="wow fadeIn">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-10 text-center center-col">
                     <span class="margin-five no-margin-top display-block letter-spacing-2">Established-2021</span>
-                    <span style="font-size: 20px; font-weight: bold;">BasaChai (বাসাচাই)</span>
-                    <p class="text-med width-90 center-col margin-seven no-margin-bottom">BasaChai (বাসাচাই) is a name of such Organization that runs or leads something 10x speed. This is mainly an information based website of our organization. We collect information and spread it out for the people or the clients worldwide. We serve people into various categories like Education, Business, Travel etc. This is eventually you called a store house of information. Finally, we arrange internship opportunity for the students of different universities who want to join with us eagerly.</p>
+                    <span style="font-size: 20px; font-weight: bold;">BasaChai (বাসা চাই)</span>
+                    <p class="text-med width-90 center-col margin-seven no-margin-bottom">BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! </p>
                 </div>
             </div>
         </div>
@@ -76,7 +116,7 @@
             <div class="row">
                 <!-- section title -->
                 <div class="col-md-6 col-sm-6">
-                    <span class="text-large letter-spacing-2 black-text font-weight-600 agency-title">TenX Genres</span>
+                    <span class="text-large letter-spacing-2 black-text font-weight-600 agency-title">BasaChai Premiums</span>
                 </div>
                 <!-- end section title -->
                 <!-- section highlight text -->
@@ -96,70 +136,70 @@
                             <li class="completed wow fadeInLeft" data-wow-duration="300ms">
                                 <figure>
                                     <div class="gallery-img">
-                                        <a href="{{ route('blog.categorywise', 'education') }}">
-                                            <img src="{{ asset('images/categories/education.jpg')}}"  class="img-responsive" />
+                                        <a href="#">
+                                            <img src="{{ asset('images/dummyhome.png')}}"  class="img-responsive" />
                                         </a>
                                     </div>
                                     <figcaption>
-                                        <h3><big>EDUCATION</big></h3>
+                                        <h3><big>Apartment 1</big></h3>
                                         {{-- <p class="project-min-height">{{ substr(strip_tags($project->title), 0, 50) }}...</p> --}}
-                                        <a class="btn inner-link btn-black btn-small" href="{{ route('blog.categorywise', 'education') }}">Explore Now</a>
+                                        <a class="btn inner-link btn-black btn-small" href="#">Explore Now</a>
                                     </figcaption>
                                 </figure>
                             </li>
                             <li class="completed wow fadeInLeft" data-wow-duration="600ms">
                                 <figure>
                                     <div class="gallery-img">
-                                        <a href="{{ route('blog.categorywise', 'business') }}">
-                                            <img src="{{ asset('images/categories/business.jpg')}}"  class="img-responsive" />
+                                        <a href="#">
+                                            <img src="{{ asset('images/dummyhome.png')}}"  class="img-responsive" />
                                         </a>
                                     </div>
                                     <figcaption>
-                                        <h3><big>BUSINESS</big></h3>
+                                        <h3><big>Apartment 2</big></h3>
                                         {{-- <p class="project-min-height">{{ substr(strip_tags($project->title), 0, 50) }}...</p> --}}
-                                        <a class="btn inner-link btn-black btn-small" href="{{ route('blog.categorywise', 'business') }}">Explore Now</a>
+                                        <a class="btn inner-link btn-black btn-small" href="#">Explore Now</a>
                                     </figcaption>
                                 </figure>
                             </li>
                             <li class="completed wow fadeInLeft" data-wow-duration="900ms">
                                 <figure>
                                     <div class="gallery-img">
-                                        <a href="{{ route('blog.categorywise', 'historical-place') }}">
-                                            <img src="{{ asset('images/categories/historical.jpg')}}"  class="img-responsive" />
+                                        <a href="#">
+                                            <img src="{{ asset('images/dummyhome.png')}}"  class="img-responsive" />
                                         </a>
                                     </div>
                                     <figcaption>
-                                        <h3><big>HISTORICAL PLACE</big></h3>
+                                        <h3><big>Apartment 3</big></h3>
                                         {{-- <p class="project-min-height">{{ substr(strip_tags($project->title), 0, 50) }}...</p> --}}
-                                        <a class="btn inner-link btn-black btn-small" href="{{ route('blog.categorywise', 'historical-place') }}">Explore Now</a>
+                                        <a class="btn inner-link btn-black btn-small" href="#">Explore Now</a>
                                     </figcaption>
                                 </figure>
                             </li>
                             <li class="completed wow fadeInLeft" data-wow-duration="1200ms">
                                 <figure>
                                     <div class="gallery-img">
-                                        <a href="{{ route('blog.categorywise', 'travel') }}">
-                                            <img src="{{ asset('images/categories/travel.jpg')}}"  class="img-responsive" />
+                                        <a href="#">
+                                            <img src="{{ asset('images/dummyhome.png')}}"  class="img-responsive" />
                                         </a>
                                     </div>
                                     <figcaption>
-                                        <h3><big>TRAVEL</big></h3>
+                                        <h3><big>Apartment 4</big></h3>
                                         {{-- <p class="project-min-height">{{ substr(strip_tags($project->title), 0, 50) }}...</p> --}}
-                                        <a class="btn inner-link btn-black btn-small" href="{{ route('blog.categorywise', 'travel') }}">Explore Now</a>
+                                        <a class="btn inner-link btn-black btn-small" href="#">Explore Now</a>
                                     </figcaption>
                                 </figure>
                             </li>
                             <li class="completed wow fadeInLeft" data-wow-duration="1500ms">
                                 <figure>
                                     <div class="gallery-img">
-                                        <a href="{{ route('blog.categorywise', 'biography') }}">
-                                            <img src="{{ asset('images/categories/biography.jpg')}}"  class="img-responsive" />
+                                        <a href="#">
+                                            <img src="{{ asset('images/dummyhome.png')}}"  class="img-responsive" />
                                         </a>
                                     </div>
                                     <figcaption>
-                                        <h3><big>BIOGRAPHY</big></h3>
+                                        <h3><big>Apartment 5</big></h3>
                                         {{-- <p class="project-min-height">{{ substr(strip_tags($project->title), 0, 50) }}...</p> --}}
-                                        <a class="btn inner-link btn-black btn-small" href="{{ route('blog.categorywise', 'biography') }}">Explore Now</a>
+                                        <a class="btn inner-link btn-black btn-small" href="#">Explore Now</a>
                                     </figcaption>
                                 </figure>
                             </li>
@@ -170,12 +210,13 @@
             </div>
         </div>
     </section>
-    {{-- <section class="padding-three bg-gray">
+    
+    <section class="padding-three bg-gray">
         <div class="container">
             <div class="row">
                 <!-- section title -->
                 <div class="col-md-6 col-sm-6">
-                    <span class="text-large letter-spacing-2 black-text font-weight-600 agency-title">Latest Publications</span>
+                    <span class="text-large letter-spacing-2 black-text font-weight-600 agency-title">BasaChai Recent Ads</span>
                 </div>
                 <!-- end section title -->
                 <!-- section highlight text -->
@@ -184,41 +225,100 @@
                 <!-- end section highlight text -->
             </div>
         </div>
-    </section> --}}
-{{--     <section id="features" class="features wow fadeIn" style="margin-bottom: 40px; padding: 60px 0;">
-        <div class="container">
+    </section>
+    <section id="tour-package" class="padding-two sm-padding-top-nine sm-padding-bottom-nine">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    @foreach($publications as $publication)
-                      <!-- features item -->
-                      <div class="features-section col-md-4 col-sm-6 no-padding wow fadeInUp" style="min-height: 100px;">
-                          <div class="col-md-3 col-sm-2 col-xs-2 ">
-                              <a href="{{ route('index.publication', $publication->code) }}">
-                                @if($publication->image != null)
-                                  <img src="{{ asset('images/publications/'.$publication->image)}}" />
-                                @else
-                                  <img src="{{ asset('images/pub.png')}}" />
-                                @endif
-                              </a>
-                          </div>
-                          <div class="col-md-9 col-sm-9 no-padding col-xs-9 text-left f-right">
-                              <a href="{{ route('index.publication', $publication->code) }}"><h5 style="margin: 5px;">{{ substr(strip_tags($publication->title), 0, 60) }}...</h5></a>
-                              <div class="separator-line bg-yellow"></div>{{ date('F d, Y', strtotime($publication->publishing_date)) }}
-
-                          </div>
-                      </div>
-                      <!-- end features item -->
-                    @endforeach
+                <div class="col-md-12">
+                    <!-- destinations items -->
+                    <div class="col-md-4 col-sm-6 margin-two no-margin-top sm-margin-bottom-four xs-no-padding">
+                        <div class="cover-background best-hotels-img" style="background-image:url('/images/offers/travel-17.jpg');">
+                            <div class="col-md-6 col-sm-9 text-center best-hotels-text bg-white pull-right">
+                                <div><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon"></i></div>
+                                <span class="text-uppercase font-weight-600 display-block black-text margin-ten no-margin-bottom letter-spacing-2">Essential Peru</span>
+                                <span class="text-uppercase letter-spacing-2 margin-ten display-block no-margin-top">7 Days / $350</span>
+                                <a href="#" class="highlight-button-dark btn btn-small button no-margin-lr">Book Now</a>
+                            </div>
+                            <div class="destinations-offer bg-fast-yellow text-center font-weight-600 text-uppercase black-text text-large no-letter-spacing">20% <span class="display-block text-small">off</span></div>
+                        </div>
+                    </div>
+                    <!-- end destinations items -->
+                    <!-- destinations items -->
+                    <div class="col-md-4 col-sm-6 margin-two no-margin-top sm-margin-bottom-four xs-no-padding">
+                        <div class="cover-background best-hotels-img" style="background-image:url('/images/offers/travel-18.jpg');">
+                            <div class="col-md-6 col-sm-9 text-center best-hotels-text bg-white pull-right">
+                                <div><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon"></i></div>
+                                <span class="text-uppercase font-weight-600 display-block black-text margin-ten no-margin-bottom letter-spacing-2">Maharaja Tour</span>
+                                <span class="text-uppercase letter-spacing-2 margin-ten display-block no-margin-top">7 Days / $350</span>
+                                <a href="#" class="highlight-button-dark btn btn-small button no-margin-lr">Book Now</a>
+                            </div>
+                            <div class="destinations-offer bg-fast-yellow text-center font-weight-600 text-uppercase black-text text-large no-letter-spacing">40% <span class="display-block text-small">off</span></div>
+                        </div>
+                    </div>
+                    <!-- end destinations items -->
+                    <!-- destinations items -->
+                    <div class="col-md-4 col-sm-6 margin-two no-margin-top sm-margin-bottom-four xs-no-padding">
+                        <div class="cover-background best-hotels-img" style="background-image:url('/images/offers/travel-19.jpg');">
+                            <div class="col-md-6 col-sm-9 text-center best-hotels-text bg-white pull-right">
+                                <div><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon"></i></div>
+                                <span class="text-uppercase font-weight-600 display-block black-text margin-ten no-margin-bottom letter-spacing-2">African Surprise</span>
+                                <span class="text-uppercase letter-spacing-2 margin-ten display-block no-margin-top">7 Days / $350</span>
+                                <a href="#" class="highlight-button-dark btn btn-small button no-margin-lr">Book Now</a>
+                            </div>
+                            <div class="destinations-offer bg-fast-yellow text-center font-weight-600 text-uppercase black-text text-large no-letter-spacing">35% <span class="display-block text-small">off</span></div>
+                        </div>
+                    </div>
+                    <!-- end destinations items -->
+                    <!-- destinations items -->
+                    <div class="col-md-4 col-sm-6 sm-margin-bottom-four xs-no-padding md-margin-bottom">
+                        <div class="cover-background best-hotels-img" style="background-image:url('/images/offers/travel-20.jpg');">
+                            <div class="col-md-6 col-sm-9 text-center best-hotels-text bg-white pull-right">
+                                <div><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon"></i></div>
+                                <span class="text-uppercase font-weight-600 display-block black-text margin-ten no-margin-bottom letter-spacing-2">Wonders India</span>
+                                <span class="text-uppercase letter-spacing-2 margin-ten display-block no-margin-top">7 Days / $350</span>
+                                <a href="#" class="highlight-button-dark btn btn-small button no-margin-lr">Book Now</a>
+                            </div>
+                            <div class="destinations-offer bg-fast-yellow text-center font-weight-600 text-uppercase black-text text-large no-letter-spacing">45% <span class="display-block text-small">off</span></div>
+                        </div>
+                    </div>
+                    <!-- end destinations items -->
+                    <!-- destinations items -->
+                    <div class="col-md-4 col-sm-6 xs-margin-bottom-four xs-no-padding">
+                        <div class="cover-background best-hotels-img" style="background-image:url('/images/offers/travel-21.jpg');">
+                            <div class="col-md-6 col-sm-9 text-center best-hotels-text bg-white pull-right">
+                                <div><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon"></i></div>
+                                <span class="text-uppercase font-weight-600 display-block black-text margin-ten no-margin-bottom letter-spacing-2">Pilgrimage</span>
+                                <span class="text-uppercase letter-spacing-2 margin-ten display-block no-margin-top">7 Days / $350</span>
+                                <a href="#" class="highlight-button-dark btn btn-small button no-margin-lr">Book Now</a>
+                            </div>
+                            <div class="destinations-offer bg-fast-yellow text-center font-weight-600 text-uppercase black-text text-large no-letter-spacing">60% <span class="display-block text-small">off</span></div>
+                        </div>
+                    </div>
+                    <!-- end destinations items -->
+                    <!-- destinations items -->
+                    <div class="col-md-4 col-sm-6 xs-margin-bottom-four xs-no-padding">
+                        <div class="cover-background best-hotels-img" style="background-image:url('/images/offers/travel-22.jpg');">
+                            <div class="col-md-6 col-sm-9 text-center best-hotels-text bg-white pull-right">
+                                <div><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon yellow-text"></i><i class="fa fa-star-o small-icon"></i></div>
+                                <span class="text-uppercase font-weight-600 display-block black-text margin-ten no-margin-bottom letter-spacing-2">Green Nepal</span>
+                                <span class="text-uppercase letter-spacing-2 margin-ten display-block no-margin-top">7 Days / $350</span>
+                                <a href="#" class="highlight-button-dark btn btn-small button no-margin-lr">Book Now</a>
+                            </div>
+                            <div class="destinations-offer bg-fast-yellow text-center font-weight-600 text-uppercase black-text text-large no-letter-spacing">36% <span class="display-block text-small">off</span></div>
+                        </div>
+                    </div>
+                    <!-- end destinations items -->
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
+
     <section class="padding-three bg-gray">
         <div class="container">
             <div class="row">
                 <!-- section title -->
                 <div class="col-md-6 col-sm-6">
-                    <span class="text-large letter-spacing-2 black-text font-weight-600 agency-title">TenX at a Glance</span>
+                    <span class="text-large letter-spacing-2 black-text font-weight-600 agency-title">BasaChai at a Glance</span>
                 </div>
                 <!-- end section title -->
                 <!-- section highlight text -->
@@ -347,6 +447,7 @@
 @endsection
 
 @section('js')
+{!!Html::script('js/parsley.min.js')!!}
 <!-- Preloader -->
 <script type="text/javascript">
     //<![CDATA[

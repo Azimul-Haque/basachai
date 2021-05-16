@@ -33,7 +33,7 @@
                 <div class="navbar-collapse collapse">
                     <ul id="accordion" class="nav navbar-nav navbar-right panel-group">
                         <li><a href="{{ route('index.index') }}" class="inner-link">Home</a></li>
-                        <li><a href="{{ route('blog.categorywise', 'education') }}" class="inner-link">Education</a></li>
+                        {{-- <li><a href="{{ route('blog.categorywise', 'education') }}" class="inner-link">Education</a></li>
                         <li><a href="{{ route('blog.categorywise', 'business') }}" class="inner-link">Business</a></li>
                         <li class="dropdown panel simple-dropdown">
                             <a href="#nav_hisorical" class="dropdown-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-hover="dropdown">
@@ -72,7 +72,7 @@
                                 <li><a href="{{ route('blog.categorywise', 'australia') }}"><i class="icon-map-pin i-plain"></i> Australia</a></li>
                                 <li><a href="{{ route('blog.categorywise', 'antarctica') }}"><i class="icon-map-pin i-plain"></i> Antarctica</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li><a href="{{ route('index.about') }}" class="inner-link">About</a></li>
                         <li>
                             <a href="{{ route('index.contact') }}">Contact</a>
@@ -104,11 +104,13 @@
                             <!-- sub menu single -->
                             <!-- sub menu item  -->
                             <ul id="nav_auth_user" class="dropdown-menu panel-collapse collapse" role="menu">
+                                @if(Auth::user()->role != 'tenant')
+                                    <li>
+                                        <a href="{{ route('dashboard.index') }}"><i class="icon-speedometer i-plain"></i> Dashboard</a>
+                                    </li>
+                                @endif
                                 <li>
-                                    <a href="{{ route('dashboard.index') }}"><i class="icon-speedometer i-plain"></i> Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('blogger.profile', Auth::user()->unique_key) }}"><i class="icon-profile-male i-plain"></i> Profile</a>
+                                    <a href="{{ route('index.profile', Auth::user()->unique_key) }}"><i class="icon-profile-male i-plain"></i> Profile</a>
                                 </li>
                                 <li>
                                     <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}"><i class="icon-key i-plain"></i> Logout</a>
@@ -116,9 +118,12 @@
                             </ul>
                         </li>
                         @else
-                        <li>
-                            <a href="{{ url('login') }}" class="inner-link">Login</a>
-                        </li>
+                            <li>
+                                <a href="{{ url('register') }}" class="inner-link">Register</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('login') }}" class="inner-link">Login</a>
+                            </li>
                         @endif
                         <!-- end menu item -->
                     </ul>

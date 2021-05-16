@@ -5,8 +5,6 @@
 
 @section('css')
   {!!Html::style('css/parsley.css')!!}
-  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/summernote/summernote.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/summernote/summernote-bs3.css') }}">
 @stop
 
 @section('content')
@@ -40,29 +38,20 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group no-margin-bottom">
-                                <label for="fb" class="text-uppercase">Facebook Url</label>
-                                <input type="text" name="fb" id="fb">
+                                <label for="role" class="text-uppercase">Type *</label>
+                                <select name="role" id="role" required="">
+                                  <option value="" selected="" disabled="">Select Type</option>
+                                  <option value="tenant">Tenant (ভাড়াটিয়া)</option>
+                                  <option value="landlord ">Landlord  (বাড়ির মালিক)</option>
+                                </select>
                             </div>
                           </div>
                         </div>
+
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group no-margin-bottom">
-                                <label for="twitter" class="text-uppercase">Twitter Url</label>
-                                <input type="text" name="twitter" id="twitter">
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group no-margin-bottom">
-                                <label for="linkedin" class="text-uppercase">Linkedin Url</label>
-                                <input type="text" name="linkedin" id="linkedin">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group no-margin-bottom">
-                                <label for="password" class="text-uppercase">Password</label>
+                                <label for="password" class="text-uppercase">Password *</label>
                                 <input type="password" name="password" id="password" required="">
                             </div>
                           </div>
@@ -70,8 +59,8 @@
                             <div class="row">
                               <div class="col-md-8">
                                   <div class="form-group no-margin-bottom">
-                                      <label><strong>Photo (300 X 300 &amp; 200Kb Max):</strong></label>
-                                      <input type="file" id="image" name="image" required="">
+                                      <label><strong>Photo (300 X 300 &amp; 200Kb Max): (Optional)</strong></label>
+                                      <input type="file" id="image" name="image">
                                   </div>
                               </div>
                               <div class="col-md-4">
@@ -79,10 +68,6 @@
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="form-group no-margin-bottom">
-                            <label for="bio" class="text-uppercase">Biography</label>
-                            <textarea type="text" name="bio" id="bio" class="summernote" required=""></textarea>
                         </div>
                         <button class="btn highlight-button-dark btn-bg btn-round margin-five no-margin-right" type="submit">Submit</button>
                     </form>
@@ -99,19 +84,7 @@
 
 @section('js')
   {!!Html::script('js/parsley.min.js')!!}
-  <script type="text/javascript" src="{{ asset('vendor/summernote/summernote.min.js') }}"></script>
-  
-  <script>
-    $(document).ready(function(){
-        $('.summernote').summernote({
-            placeholder: 'Write Biography',
-            tabsize: 2,
-            height: 200,
-            dialogsInBody: true
-        });
-        $('div.note-group-select-from-files').remove();
-    });
-  </script>
+
   <script type="text/javascript">
     var _URL = window.URL || window.webkitURL;
     $(document).ready( function() {

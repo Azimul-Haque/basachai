@@ -30,14 +30,26 @@ class IndexController extends Controller
         // $alumnis = User::where('payment_status', 1)
         //                ->where('role', 'alumni')->count();
 
-        $sliders = Slider::orderBy('id', 'desc')->get();
+        // $sliders = Slider::orderBy('id', 'desc')->get();
         $blogs = Blog::orderBy('id', 'DESC')->get()->take(3);
 
         $employeecount = User::all()->count();
         $blogcount = Blog::all()->count();
         
         return view('index.index')
-                ->withSliders($sliders)
+                ->withBlogs($blogs)
+                ->withBlogcount($blogcount);
+    }
+
+    public function searchHome(Request $request)
+    {
+        // $sliders = Slider::orderBy('id', 'desc')->get();
+        $blogs = Blog::orderBy('id', 'DESC')->get()->take(3);
+
+        $employeecount = User::all()->count();
+        $blogcount = Blog::all()->count();
+        
+        return view('search.index')
                 ->withBlogs($blogs)
                 ->withBlogcount($blogcount);
     }
@@ -320,11 +332,9 @@ class IndexController extends Controller
 
     public function getProfile($unique_key)
     {
-        // $blogs = Blog::where('user_id', Auth::user()->id)->get();
-        // $categories = Category::all();
-        $user = User::where('unique_key', $unique_key)->first();
-        return view('index.profile')->withUser($user);
-        
+        $blogger = User::where('unique_key', $unique_key)->first();
+        $blogger->setRelation('blogs', $blogger->blogs()->orderBy('id', 'desc')->paginate(6));
+        return view('blogs.blogger')->withBlogger($blogger);
     }
 
     public function storeApplication(Request $request)
@@ -333,23 +343,18 @@ class IndexController extends Controller
             'name'                      => 'required|max:255',
             'email'                     => 'required|email|unique:users,email',
             'phone'                     => 'required|numeric',
-            'fb'                        => 'sometimes|max:255',
-            'twitter'                   => 'sometimes|max:255',
-            'linkedin'                  => 'sometimes|max:255',
-            'image'                     => 'required|image|max:300',
-            'bio'                       => 'required',
-            'password'                  => 'required|min:8'
+            'role'                     => 'required',
+            'password'                  => 'required|min:8',
+            'image'                     => 'sometimes|image|max:300',
         ));
 
-        $application = new User();
-        $application->name = htmlspecialchars(preg_replace("/\s+/", " ", ucwords($request->name)));
-        $application->email = htmlspecialchars(preg_replace("/\s+/", " ", $request->email));
-        $application->phone = htmlspecialchars(preg_replace("/\s+/", " ", $request->phone));
+        $user = new User();
+        $user->name = htmlspecialchars(preg_replace("/\s+/", " ", ucwords($request->name)));
+        $user->email = htmlspecialchars(preg_replace("/\s+/", " ", $request->email));
+        $user->phone = htmlspecialchars(preg_replace("/\s+/", " ", $request->phone));
         
-        $application->designation = 'Member';
-        $application->fb = htmlspecialchars(preg_replace("/\s+/", " ", $request->fb));
-        $application->twitter = htmlspecialchars(preg_replace("/\s+/", " ", $request->twitter));
-        $application->linkedin = htmlspecialchars(preg_replace("/\s+/", " ", $request->linkedin));
+        $user->designation = 'Member';
+        
 
         // image upload
         if($request->hasFile('image')) {
@@ -357,37 +362,23 @@ class IndexController extends Controller
             $filename   = str_replace(' ','',$request->name).time() .'.' . $image->getClientOriginalExtension();
             $location   = public_path('/images/users/'. $filename);
             Image::make($image)->resize(250, 250)->save($location);
-            $application->image = $filename;
+            $user->image = $filename;
         }
-        $application->password = Hash::make($request->password);
-
-        $application->bio    = Purifier::clean($request->bio, 'youtube');
-        $application->type = 'Member';
-        $application->role = 'member';
-        $application->activation_status = 0;
-
-        // generate unique_key
-        $unique_key_length = 100;
-        $pool = '0123456789abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $unique_key = substr(str_shuffle(str_repeat($pool, 100)), 0, $unique_key_length);
-        // generate unique_key
-        $application->unique_key = $unique_key;
-        $application->password = Hash::make($request->password);
-        $application->save();
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role; // admin, tenant, landlord, 
+        $user->activation_status = 1;
+        $user->unique_key = unique_key(50);
+        $user->password = Hash::make($request->password);
+        $user->save();
         
         Session::flash('success', 'You have registered Successfully!');
-        Auth::login($application);
-        return redirect()->route('index.profile', $unique_key);
-    }
-
-    public function getStrategy($id) 
-    {
-        $strategy = Strategy::find($id);
-        $strategies = Strategy::orderBy('id', 'desc')->get();
-
-        return view('index.strategy')
-                        ->withStrategy($strategy)
-                        ->withStrategies($strategies);
+        Auth::login($user);
+        if($request->role == 'tenant') {
+            return redirect()->route('index.profile', $user->unique_key);
+        } else {
+            return redirect()->route('dashboard.index');
+        }
+        
     }
 
 

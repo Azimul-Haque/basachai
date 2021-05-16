@@ -58,8 +58,7 @@
                             <li><span class="font-weight-600">Name:</span> {{ $user->name }}</li>
                             <li><span class="font-weight-600">Email:</span> {{ $user->email }}</li>
                             <li><span class="font-weight-600">Phone:</span> {{ $user->phone }}</li>
-                            <li><span class="font-weight-600">Designation:</span> {{ $user->designation }}</li>
-                            <li><span class="font-weight-600">Social:</span> 
+                            {{-- <li><span class="font-weight-600">Social:</span> 
 
                                 <a href="@if($user->fb != null) {{ $user->fb }} @endif" style="font-size: 25px;" target="_blank"><i class="fa fa-facebook-official" style="color: #4267B0;"></i></a>
                                 
@@ -67,7 +66,7 @@
                                 
                                 <a href="@if($user->linkedin != null) {{ $user->linkedin }} @endif" style="font-size: 25px" target="_blank"><i class="fa fa-linkedin-square" style="color: #0874B1;"></i></a>
                                 
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -76,62 +75,10 @@
     </section> 
     <!-- end about user section -->
 
-    <!-- about user's biography section -->
-    <section id="features" class="border-bottom xs-onepage-section"> {{-- border-bottom no-padding-bottom --}}
-        <div class="container">
-            <div class="row">
-                <!-- section title -->
-                <div class="col-md-12 text-center">
-                    <span class="title-number">Biography</span>
-                </div>
-                <!-- end section title -->
-            </div>
-            <div class="row margin-five no-margin-bottom">
-                <div class="col-md-12">
-                    {!! $user->bio !!}
-                </div>
-            </div>
-        </div>
-    </section> 
-    <!-- end about user's biography section -->
-
-    <!-- about user's publications section -->
-    <section id="features" class="xs-onepage-section"> {{-- border-bottom no-padding-bottom --}}
-        <div class="container">
-            <div class="row">
-                <!-- section title -->
-                <div class="col-md-12 text-center">
-                    <span class="title-number">Publications</span>
-                </div>
-                <!-- end section title -->
-            </div>
-            <div class="row margin-five no-margin-bottom">
-                <div class="col-md-12">
-                    @foreach($user->publications as $publication)
-                      <!-- features item -->
-                      <div class="features-section col-md-4 col-sm-6 no-padding wow fadeInUp" style="min-height: 100px;">
-                          <div class="col-md-3 col-sm-2 col-xs-2 ">
-                              <a href="{{ route('index.publication', $publication->code) }}">
-                                @if($publication->image != null)
-                                  <img src="{{ asset('images/publications/'.$publication->image)}}" />
-                                @else
-                                  <img src="{{ asset('images/pub.png')}}" />
-                                @endif
-                              </a>
-                          </div>
-                          <div class="col-md-9 col-sm-9 no-padding col-xs-9 text-left f-right">
-                              <a href="{{ route('index.publication', $publication->code) }}"><h5 style="margin: 5px;">{{ substr(strip_tags($publication->title), 0, 60) }}...</h5></a>
-                              <div class="separator-line bg-yellow"></div>{{ date('F d, Y', strtotime($publication->publishing_date)) }}
-
-                          </div>
-                      </div>
-                      <!-- end features item -->
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section> 
-    <!-- end about user's publications section -->
+   {{--  FAVORITE HOUSE BOSE EKHANE
+    FAVORITE HOUSE BOSE EKHANE
+    FAVORITE HOUSE BOSE EKHANE --}}
+    
 @endsection
 
 @section('js')

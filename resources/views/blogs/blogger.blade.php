@@ -19,7 +19,7 @@
                     <!-- page title tagline -->
                     <span class="">
                       {{-- <i class="fa fa-graduation-cap" aria-hidden="true"></i> {{ $blogger->degree }} {{ ordinal($blogger->batch) }}, {{ $blogger->passing_year }}<br/> --}}
-                      <i class="fa fa-briefcase" aria-hidden="true"></i> {{ $blogger->type }}
+                      <i class="fa fa-briefcase" aria-hidden="true"></i> {{ ucfirst($blogger->role) }}
                     </span>
                     <!-- end title tagline -->
                     <div class="separator-line margin-three bg-black no-margin-lr sm-margin-top-three sm-margin-bottom-three no-margin-bottom "></div>
@@ -38,19 +38,13 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12 text-uppercase sm-no-margin-top wow fadeInUp " data-wow-duration="600ms">
                     <center>
-                      <img src="{{ asset('images/users/'.$blogger->image) }}" class="img-responsive shadow" style="width: 150px; height: auto;">
+                      @if($blogger->image != '' && file_exists('images/users/'.$blogger->image))
+                        <img src="{{ asset('images/users/'.$blogger->image) }}" class="img-responsive shadow" style="width: 150px; height: auto;">
+                      @else
+                        <img src="{{ asset('images/user.png') }}" class="img-responsive shadow" style="width: 150px; height: auto;">
+                      @endif
                     </center>
                 </div>
-            </div>
-            <div>
-              <!-- social icon -->
-              <div class="text-center no-margin-top">
-                  <a href="{{ $blogger->fb }}" class="btn social-icon social-icon-large button" target="_blank"><i class="fa fa-facebook"></i></a>
-                  <a href="{{ $blogger->twitter }}" class="btn social-icon social-icon-large button" target="_blank"><i class="fa fa-twitter"></i></a>
-                  {{-- <a href="{{ $blogger->gplus }}" class="btn social-icon social-icon-large button" target="_blank"><i class="fa fa-google-plus"></i></a> --}}
-                  <a href="{{ $blogger->linkedin }}" class="btn social-icon social-icon-large button" target="_blank"><i class="fa fa-linkedin"></i></a>
-              </div>
-              <!-- end social icon -->
             </div>
         </div>
     </section>
@@ -58,7 +52,20 @@
     <!-- content section -->
     <section class="wow fadeIn">
       <div class="container">
-        <h2 class="text-center margin-three wow fadeInUp">Articles by {{ $blogger->name }}</h2>
+        <h2 class="text-center margin-three wow fadeInUp">Favorites</h2>
+        <div class="row blog-masonry blog-masonry-2col no-transition">
+          
+        </div>
+      </div>
+    </section>
+    <!-- end content section -->
+
+    <!-- content section -->
+    <section class="wow fadeIn">
+      <div class="container">
+        @if(count($blogger->blogs) > 0)
+          <h2 class="text-center margin-three wow fadeInUp">Articles by {{ $blogger->name }}</h2>
+        @endif
         <div class="row blog-masonry blog-masonry-2col no-transition">
           <!-- post item -->
           @php $counter = 1; @endphp

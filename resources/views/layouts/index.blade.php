@@ -2,8 +2,8 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>@yield('title') | TenX | TenX is a name of such Organization that runs or leads something 10x speed</title>
-    <meta name="description" content="TenX is a name of such Organization that runs or leads something 10x speed. Developed by A. H. M. Azimul Haque">
+    <title>@yield('title') | BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! </title>
+    <meta name="description" content="BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! . Developed by A. H. M. Azimul Haque">
     <meta name="keywords" content="TenX, TenX Speed">
     <meta charset="utf-8">
     <meta name="author" content="A. H. M. Azimul Haque">
@@ -105,7 +105,7 @@
                     <div class="col-md-4 col-sm-4 text-center">
                         <i class="icon-envelope small-icon black-text"></i>
                         <h6 class="margin-two no-margin-bottom">
-                            <a href="mailto:tenxorg@gmail.com" class="black-text">tenxorg@gmail.com</a>
+                            <a href="mailto:basachai@gmail.com" class="black-text">basachai@gmail.com</a>
                         </h6>
                     </div>
                     <!-- end email -->
@@ -119,7 +119,7 @@
                     <h5>About Us</h5>
                     <!-- end headline -->
                     <!-- text -->
-                    <p class="footer-text">Tenx is a name of such Organization that runs or leads something 10x speed. This is mainly an information based website of our organization. We collect information and spread it out for the people or the clients worldwide.</p>
+                    <p class="footer-text">BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! </p>
                     <!-- end text -->
                 </div>
                 

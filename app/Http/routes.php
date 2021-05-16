@@ -17,6 +17,7 @@ Route::get('/clear', ['as'=>'clear','uses'=>'IndexController@clear']);
 // index routes
 // index routes
 Route::get('/', ['as'=>'index.index','uses'=>'IndexController@index']);
+Route::post('/search/post', ['as'=>'index.search','uses'=>'IndexController@searchHome']);
 Route::get('/home', ['as'=>'index.homeadhoc','uses'=>'IndexController@homeAdhoc']); // reset password redirect adhoc solve
 Route::get('/about', ['as'=>'index.about','uses'=>'IndexController@getAbout']);
 Route::get('/about/{type}', ['as'=>'index.about.type','uses'=>'IndexController@getAboutType']);
@@ -52,7 +53,6 @@ Route::get('/events', ['as'=>'index.events','uses'=>'IndexController@getEvents']
 Route::get('/gallery', ['as'=>'index.gallery','uses'=>'IndexController@getGallery']);
 Route::get('/contact', ['as'=>'index.contact','uses'=>'IndexController@getContact']);
 Route::post('/contact/form/message/store', ['as'=>'index.storeformmessage','uses'=>'IndexController@storeFormMessage']);
-Route::get('/application', ['as'=>'index.application','uses'=>'IndexController@getApplication']);
 Route::get('/member/login', ['as'=>'index.login','uses'=>'IndexController@getLogin']);
 Route::post('/member/application/store', ['as'=>'index.storeapplication','uses'=>'IndexController@storeApplication']);
 
@@ -63,7 +63,7 @@ Route::post('/member/application/store', ['as'=>'index.storeapplication','uses'=
 // blog routes
 Route::resource('blogs','BlogController');
 Route::get('blog/{slug}',['as' => 'blog.single', 'uses' => 'BlogController@getBlogPost']);
-Route::get('blogger/profile/{unique_key}',['as' => 'blogger.profile', 'uses' => 'BlogController@getBloggerProfile']);
+// Route::get('profile/{unique_key}',['as' => 'blogger.profile', 'uses' => 'BlogController@getBloggerProfile']);
 Route::get('/like/{blog_id}',['as' => 'blog.like', 'uses' => 'BlogController@likeBlogAPI']);
 Route::get('/check/like/{blog_id}',['as' => 'blog.checklike', 'uses' => 'BlogController@checkLikeAPI']);
 Route::get('/category/{name}',['as' => 'blog.categorywise', 'uses' => 'BlogController@getCategoryWise']);
@@ -72,6 +72,7 @@ Route::get('/archive/{date}',['as' => 'blog.monthwise', 'uses' => 'BlogControlle
 // blog routes
 
 Route::auth();
+Route::get('/register', ['as'=>'index.register','uses'=>'IndexController@getApplication']);
 
 // dashboard routes
 // dashboard routes

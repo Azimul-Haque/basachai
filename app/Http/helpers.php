@@ -28,6 +28,12 @@
         return $random_string;
   }
 
+  function unique_key($length) {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $unique_key = substr(str_shuffle(str_repeat($pool, $length)), 0, $length);
+        return $unique_key;
+  }
+
   function tap($value, $callback)
   {
       $callback($value);
