@@ -36,10 +36,10 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}"> --}}
     <meta property="og:image" content="{{ asset('/images/banner.jpg') }}" />
     <meta property="og:title" content="Tenx | Tenx is a name of such Organization that runs or leads something 10x speed"/>
-    <meta name="description" property="og:description" content="TenX Org is such an organization that runs or leads something on 10x speed. Developed by A. H. M. Azimul Haque" />
+    <meta name="description" property="og:description" content="BasaChai (বাসাচাই) is the place where you can find your affordable home for rent! Developed by A. H. M. Azimul Haque" />
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta property="og:site_name" content="TenX">
+    <meta property="og:site_name" content="BasaChai (বাসাচাই)">
     <meta property="og:locale" content="en_US">
     <meta property="fb:admins" content="100001596964477">
     <meta property="fb:app_id" content="163879201229487">
@@ -56,7 +56,7 @@
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
-    @include('partials._slider')
+    {{-- @include('partials._slider') --}}
     
     <!-- about section -->
     <section class=" wow fadeIn">
@@ -64,8 +64,8 @@
             <div class="row">
                 <div class="col-md-8 col-sm-10 text-center center-col">
                     <span class="margin-five no-margin-top display-block letter-spacing-2">Established-2021</span>
-                    <span style="font-size: 20px; font-weight: bold;">TenX</span>
-                    <p class="text-med width-90 center-col margin-seven no-margin-bottom">Tenx is a name of such Organization that runs or leads something 10x speed. This is mainly an information based website of our organization. We collect information and spread it out for the people or the clients worldwide. We serve people into various categories like Education, Business, Travel etc. This is eventually you called a store house of information. Finally, we arrange internship opportunity for the students of different universities who want to join with us eagerly.</p>
+                    <span style="font-size: 20px; font-weight: bold;">BasaChai (বাসাচাই)</span>
+                    <p class="text-med width-90 center-col margin-seven no-margin-bottom">BasaChai (বাসাচাই) is a name of such Organization that runs or leads something 10x speed. This is mainly an information based website of our organization. We collect information and spread it out for the people or the clients worldwide. We serve people into various categories like Education, Business, Travel etc. This is eventually you called a store house of information. Finally, we arrange internship opportunity for the students of different universities who want to join with us eagerly.</p>
                 </div>
             </div>
         </div>
@@ -234,28 +234,21 @@
         <div class="container position-relative">
             <div class="row">
                 <!-- counter item -->
-                <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten" data-wow-duration="300ms">
+                <div class="col-md-4 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten" data-wow-duration="300ms">
                     <i class="icon-heart medium-icon"></i>
-                    <span class="timer counter-number white-text main-font font-weight-600" data-to="{{ $employeecount }}" data-speed="7000"></span>
-                    <span class="counter-title light-gray-text">People</span>
+                    <span class="timer counter-number white-text main-font font-weight-600" data-to="1000" data-speed="7000"></span>
+                    <span class="counter-title light-gray-text">People Served</span>
                 </div>
                 <!-- end counter item -->
                 <!-- counter item -->
-                <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten" data-wow-duration="600ms">
+                <div class="col-md-4 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten" data-wow-duration="600ms">
                     <i class="icon-happy medium-icon"></i>
-                    <span class="timer counter-number white-text main-font font-weight-600" data-to="{{ $ongoingprojectcount }}" data-speed="7000"></span>
-                    <span class="counter-title light-gray-text">Ongoing Project</span>
+                    <span class="timer counter-number white-text main-font font-weight-600" data-to="100" data-speed="7000"></span>+
+                    <span class="counter-title light-gray-text">Available Homes</span>
                 </div>
                 <!-- end counter item -->
                 <!-- counter item -->
-                <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten" data-wow-duration="900ms">
-                    <i class="icon-anchor medium-icon"></i>
-                    <span class="timer counter-number white-text main-font font-weight-600" data-to="{{ $completeprojectcount }}" data-speed="7000"></span>
-                    <span class="counter-title light-gray-text">Projects Completed</span>
-                </div>
-                <!-- end counter item -->
-                <!-- counter item -->
-                <div class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp" data-wow-duration="1200ms">
+                <div class="col-md-4 col-sm-6 text-center counter-section wow fadeInUp" data-wow-duration="1200ms">
                     <i class="icon-chat medium-icon"></i>
                     <span class="timer counter-number white-text main-font font-weight-600" data-to="{{ $blogcount }}" data-speed="7000"></span>
                     <span class="counter-title light-gray-text">Articles</span>

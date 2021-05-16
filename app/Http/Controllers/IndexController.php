@@ -8,14 +8,7 @@ use App\Http\Requests;
 use App\User;
 use App\Blog;
 use App\Category;
-use App\Expertise;
-use App\Project;
-use App\Publication;
-use App\Discategory;
-use App\Districtscord;
-use App\Disdata;
 use App\Slider;
-use App\Strategy;
 use App\Formmessage;
 
 use Carbon\Carbon;
@@ -38,26 +31,15 @@ class IndexController extends Controller
         //                ->where('role', 'alumni')->count();
 
         $sliders = Slider::orderBy('id', 'desc')->get();
-        $projects = Project::orderBy('id', 'desc')->get()->take(5);
-        $publications = Publication::where('status', 1)->orderBy('id', 'desc')->get()->take(3);
         $blogs = Blog::orderBy('id', 'DESC')->get()->take(3);
 
         $employeecount = User::all()->count();
-        $ongoingprojectcount = Project::where('status', 0)->count();
-        $completeprojectcount = Project::where('status', 1)->count();
-        $publicationcount = Publication::all()->count();
         $blogcount = Blog::all()->count();
         
         return view('index.index')
-                            ->withSliders($sliders)
-                            ->withProjects($projects)
-                            ->withPublications($publications)
-                            ->withBlogs($blogs)
-                            ->withEmployeecount($employeecount)
-                            ->withOngoingprojectcount($ongoingprojectcount)
-                            ->withCompleteprojectcount($completeprojectcount)
-                            ->withPublicationcount($publicationcount)
-                            ->withBlogcount($blogcount);
+                ->withSliders($sliders)
+                ->withBlogs($blogs)
+                ->withBlogcount($blogcount);
     }
 
     public function homeAdhoc()
