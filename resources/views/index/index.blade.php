@@ -39,7 +39,7 @@
     </style>
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}"> --}}
     <meta property="og:image" content="{{ asset('/images/banner.jpg') }}" />
-    <meta property="og:title" content="BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! "/>
+    <meta property="og:title" content="BasaChai (বাসা চাই) is the place where you can find your affordable home for rent!"/>
     <meta name="description" property="og:description" content="BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! Developed by A. H. M. Azimul Haque" />
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="{{ Request::url() }}" />

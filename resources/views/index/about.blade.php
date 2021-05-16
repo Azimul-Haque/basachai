@@ -49,8 +49,12 @@
                   <div class="model-details clearfix xs-no-margin box">
                       <div class="col-md-6 no-padding">
                         <center>
-                          <a href="{{ route('blogger.profile', $single->unique_key) }}">
-                            <img src="{{ asset('images/users/'. $single->image) }}" alt="{{ $single->name }}'s Photo" class="img-circle shadow xs-margin-bottom-ten" />
+                          <a href="{{ route('index.profile', $single->unique_key) }}">
+                            @if($single->image != '')
+                              <img src="{{ asset('images/users/'. $single->image) }}" alt="{{ $single->name }}'s Photo" class="img-circle shadow xs-margin-bottom-ten" />
+                            @else
+                              <img src="{{ asset('images/user.png/') }}" alt="{{ $single->name }}'s Photo" class="img-circle shadow xs-margin-bottom-ten" />
+                            @endif
                           </a>
                         </center>
                       </div>
@@ -58,7 +62,7 @@
                         <center>
                           <div class="team-member xs-no-padding">
                               <span class="hidden-xs"><br/><br/></span>
-                              <a href="{{ route('blogger.profile', $single->unique_key) }}">
+                              <a href="{{ route('index.profile', $single->unique_key) }}">
                                 <span class="team-name text-uppercase black-text display-block font-weight-600">{{ $single->name }}</span>
                               </a>
                               <span class="team-post text-uppercase letter-spacing-2 display-block">{{ $single->type }}</span>
@@ -87,7 +91,7 @@
                 <div class="col-md-10 col-sm-10 text-center center-col">
                     <div class="about-year text-uppercase white-text"><span class="clearfix">1</span> Mission</div>
                     <p class="title-small letter-spacing-1 white-text font-weight-100">
-                        Tenx empowers young people who are interested in self-development and social development as well as dreaming of an excellent career path in all private and public corporations that produce goods and/or provide nonfinancial services to the markets.
+                        BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! 
                     </p>
                 </div>
             </div>
@@ -116,7 +120,7 @@
             <div class="row">
                 <div class="col-md-10 col-sm-11 center-col text-center">
                     <p class="text-large white-text margin-five no-margin-bottom">
-                        Our vision is to express the potentiality of an individual for social development. We want community leaders to nurture them to influence their own community. We intend to invent the creative mind to do well. By improving your observation skills, you’ll tap into your creative energy and discover nuances and details you hadn’t noticed before.
+                        BasaChai (বাসা চাই) is the place where you can find your affordable home for rent! 
                     <p>
                 </div>
             </div>
